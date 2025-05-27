@@ -10,20 +10,6 @@ public class Account {
         this.balance = balance;
     }
 
-    public void deposit(double amount) {
-        balance += amount;
-        addHistory("Deposited " + amount + " " + currency);
-    }
-
-    public boolean withdraw(double amount) {
-        if (balance >= amount) {
-            balance -= amount;
-            addHistory("Withdrew " + amount + " " + currency);
-            return true;
-        }
-        return false;
-    }
-
     public void addHistory(String h) {
         for (int i = 0; i < history.length; i++) {
             if (history[i] == null) {
@@ -37,14 +23,18 @@ public class Account {
         return history;
     }
 
-    public String getHistoryText() {
-        String text = "";
-        for (int i = 0; i < history.length; i++) {
-            if (history[i] != null) {
-                text += history[i];
-            }
+    public void deposit(double amount) {
+        balance += amount;
+        addHistory("Deposited " + amount + " " + currency);
+    }
+
+    public boolean withdraw(double amount) {
+        if (balance >= amount) {
+            balance -= amount;
+            addHistory("Withdrew " + amount + " " + currency);
+            return true;
         }
-        return text;
+        return false;
     }
 
     public String getHolderName() {

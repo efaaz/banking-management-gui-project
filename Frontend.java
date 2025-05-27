@@ -6,8 +6,9 @@ public class Frontend extends JFrame implements ActionListener {
     private JComboBox<String> accountSelector, fromSelector, toSelector;;
     private JTextField amountField, transferAmountField;
     private JTextArea transectionField;
-    private JLabel currencyLabel, balanceLabel, selectLabel, amountLabel, transectionLabel;
-    private JButton depositBtn, withdrawBtn;
+    private JLabel currencyLabel, balanceLabel, selectLabel, amountLabel, transectionLabel, TransferLabel, fromLabel,
+            toLabel, transferAmountLabel;
+    private JButton depositBtn, withdrawBtn, transferBtn;
     private AccountManager manager;
     JPanel panel;
 
@@ -38,6 +39,7 @@ public class Frontend extends JFrame implements ActionListener {
                 accountSelector.addItem(names[i]);
             }
         }
+
         accountSelector.setBounds(150, 20, 200, 25);
         accountSelector.addActionListener(this);
         panel.add(accountSelector);
@@ -80,12 +82,11 @@ public class Frontend extends JFrame implements ActionListener {
         withdrawBtn.addActionListener(this);
         panel.add(withdrawBtn);
 
-        // FROM dropdown
-        JLabel TransferLabel = new JLabel("Tranfer Funds:");
+        TransferLabel = new JLabel("Tranfer Funds:");
         TransferLabel.setBounds(30, 240, 100, 25);
         panel.add(TransferLabel);
 
-        JLabel fromLabel = new JLabel("From:");
+        fromLabel = new JLabel("From:");
         fromLabel.setBounds(30, 270, 50, 25);
         panel.add(fromLabel);
 
@@ -102,24 +103,21 @@ public class Frontend extends JFrame implements ActionListener {
         fromSelector.setBounds(80, 270, 120, 25);
         panel.add(fromSelector);
 
-        // TO dropdown
-        JLabel toLabel = new JLabel("To:");
+        toLabel = new JLabel("To:");
         toLabel.setBounds(210, 270, 30, 25);
         panel.add(toLabel);
 
         toSelector.setBounds(240, 270, 120, 25);
         panel.add(toSelector);
 
-        // Transfer amount field
-        JLabel transferAmountLabel = new JLabel("Amounts:");
+        transferAmountLabel = new JLabel("Amounts:");
         transferAmountLabel.setBounds(30, 300, 80, 50);
         panel.add(transferAmountLabel);
         transferAmountField = new JTextField();
         transferAmountField.setBounds(100, 315, 200, 25);
         panel.add(transferAmountField);
 
-        // Transfer button
-        JButton transferBtn = new JButton("Transfer");
+        transferBtn = new JButton("Transfer");
         transferBtn.setBounds(325, 315, 100, 25);
         transferBtn.addActionListener(this);
         panel.add(transferBtn);

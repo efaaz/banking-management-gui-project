@@ -1,5 +1,4 @@
 import java.io.*;
-
 public class AccountManager {
     private Account[] accounts = new Account[10];
     private final String fileName = "data.txt";
@@ -25,7 +24,7 @@ public class AccountManager {
                 return accounts[i];
             }
         }
-        return null; // no match found
+        return null;
     }
 
     public String[] getAccountNames() {
