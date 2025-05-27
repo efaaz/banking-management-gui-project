@@ -1,0 +1,2 @@
+Alice,USD,500.0
+Bob,BDT,1000.0

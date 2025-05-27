@@ -1,23 +1,57 @@
 public class Account {
-    protected String accountName;
-    protected String currencyType;
-    protected double expense;
-    protected double totalBalance;
-    Account(String accountName, String currencyType, double totalBalance) {
-        this.accountName = accountName;
-        this.currencyType = currencyType;
-        this.expense = 0.0;
-        this.totalBalance = totalBalance;  
+    private String holderName;
+    private String currency;
+    private double balance;
+
+    public Account(String holderName, String currency, double balance) {
+        this.holderName = holderName;
+        this.currency = currency;
+        this.balance = balance;
     }
 
-    public String getAccountName() {
-        return accountName;
+    public String getHolderName() {
+        return holderName;
     }
-    public String getCurrencyType() {
-        return currencyType;
+
+    public String getCurrency() {
+        return currency;
     }
-    public double getExpense() {
-        return expense;
+
+    public double getBalance() {
+        return balance;
     }
-    
+
+    public void deposit(double amount) {
+        balance += amount;
+    }
+
+    public boolean withdraw(double amount) {
+        if (balance >= amount) {
+            balance -= amount;
+            return true;
+        }
+        return false;
+    }
+
+    public void receive(double amount) {
+        balance += amount;
+    }
+
+    public static double convert(double amount, String from, String to) {
+        double rate = 1.0;
+        if (from.equals("USD") && to.equals("BDT"))
+            {rate = 110;}
+        else if (from.equals("BDT") && to.equals("USD"))
+            {rate = 1.0 / 110;}
+        return amount * rate;
+    }
+
+    public String toString() {
+        return holderName + "," + currency + "," + balance;
+    }
+
+    public static Account fromString(String line) {
+        String[] parts = line.split(",");
+        return new Account(parts[0], parts[1], Double.parseDouble(parts[2]));
+    }
 }
