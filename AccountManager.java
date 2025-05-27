@@ -21,11 +21,11 @@ public class AccountManager {
 
     public Account getAccountByName(String name) {
         for (int i = 0; i < accounts.length; i++) {
-            if (accounts[i].getHolderName().equals(name)) {
+            if (accounts[i] != null && accounts[i].getHolderName().equals(name)) {
                 return accounts[i];
             }
         }
-        return null;
+        return null; // no match found
     }
 
     public String[] getAccountNames() {
@@ -69,6 +69,15 @@ public class AccountManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean isEmpty() {
+        for (int i = 0; i < accounts.length; i++) {
+            if (accounts[i] != null) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
